@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <html>
 <head>
@@ -39,17 +39,13 @@
 <div class="head-wrap head-wrap-list">
 <jsp:include page="/getTop.do" flush="true" />
 </div>
-   
-
-
-
 
 <!--	head	-->
 <div class="main-wrap">
     <ul class="breadcrumb">
-            <li><a href="HomePage.do">陆金所首页</a> <span class="divider">&gt;</span></li>
+        <li><a href="HomePage.do">陆金所首页</a> <span class="divider">&gt;</span></li>
         <li class="active">投资项目</li>
-</ul>
+    </ul>
     <div class="list-product-title clearfix">
         <i class="icon-anyidai">稳盈-安e贷</i>
         <a href="anyidai2intro.htm" target="_blank">了解详情 <span>&gt;</span></a>
@@ -58,102 +54,98 @@
     <div class="list-wrap clearfix">
         <div class="list-content">
             <div class="list-property">
-    <div class="list-property-head">
-        <span class="title">请选择</span>
-        <b></b>
-    </div>
-    <form action="InvestMent.do" name="form1">
-    <div class="list-property-body">
-        <dl class="clearfix list-property-col" id="list-property-minAmount">
-            <dt>投资金额</dt>
-            <dd>
-                <span class="all"><a class="cur" href="InvestMent.do?startAmt=0&endAmt=99999999&startTerm=${startTerm}&endTerm=${endTerm}&current=1">全部</a></span>
-                <ul class="selection clearfix">
-                    <li><a href="InvestMent.do?startAmt=0&endAmt=1&startTerm=${startTerm}&endTerm=${endTerm}&current=1" >1万元以下 <span class="count-num">(<em>0</em>)</span></a></li>  
-                    <li><a href="InvestMent.do?startAmt=1&endAmt=5&startTerm=${startTerm}&endTerm=${endTerm}&current=1" >1万-5万元 <span class="count-num">(<em>0</em>)</span></a></li>
-                    <li><a href="InvestMent.do?startAmt=5&endAmt=99999999&startTerm=${startTerm}&endTerm=${endTerm}&current=1">5万元以上 <span class="count-num">(<em>0</em>)</span></a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl class="clearfix list-property-col">
-            <dt>投资期限</dt>
-            <dd>
-                <span class="all"><a class="cur" href="InvestMent.do?startTerm=0&startTerm=60&startAmt=${startAmt}&endAmt=${endAmt}&current=1">全部</a></span>
-                <ul class="selection clearfix">
-                    <li><a href="InvestMent.do?startTerm=0&endTerm=12&startAmt=${startAmt}&endAmt=${endAmt}&current=1">12个月以下</a></li>
-                    <li><a href="InvestMent.do?startTerm=12&endTerm=60&startAmt=${startAmt}&endAmt=${endAmt}&current=1">12个月及以上</a></li>
-                </ul>
-            </dd>
-        </dl>
-         <div class="invest-range">
-         
-            <ul class="clearfix">
-         
-                <li><span class="input-wrap"><input type="text" class="input" name="startAmt"></span></li>
-                <li class="unit">万元</li>
-                <li class="dash">-</li>
-                <li><span class="input-wrap"><input type="text" class="input" name="endAmt"></span></li>
-                <li class="unit">万元</li>
+                <div class="list-property-head">
+                    <span class="title">请选择</span>
+                    <b></b>
+                </div>
+                <form action="InvestMent.do" name="form1">
+                <div class="list-property-body">
+                    <dl class="clearfix list-property-col" id="list-property-minAmount">
+                        <dt>投资金额</dt>
+                        <dd>
+                            <span class="all"><a class="cur" href="InvestMent.do?startAmt=0&endAmt=99999999&startTerm=${startTerm}&endTerm=${endTerm}&current=1">全部</a></span>
+                            <ul class="selection clearfix">
+                                <li><a href="InvestMent.do?startAmt=0&endAmt=1&startTerm=${startTerm}&endTerm=${endTerm}&current=1" >1万元以下 <span class="count-num">(<em>0</em>)</span></a></li>  
+                                <li><a href="InvestMent.do?startAmt=1&endAmt=5&startTerm=${startTerm}&endTerm=${endTerm}&current=1" >1万-5万元 <span class="count-num">(<em>0</em>)</span></a></li>
+                                <li><a href="InvestMent.do?startAmt=5&endAmt=99999999&startTerm=${startTerm}&endTerm=${endTerm}&current=1">5万元以上 <span class="count-num">(<em>0</em>)</span></a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="clearfix list-property-col">
+                        <dt>投资期限</dt>
+                        <dd>
+                            <span class="all"><a class="cur" href="InvestMent.do?startTerm=0&startTerm=60&startAmt=${startAmt}&endAmt=${endAmt}&current=1">全部</a></span>
+                            <ul class="selection clearfix">
+                                <li><a href="InvestMent.do?startTerm=0&endTerm=12&startAmt=${startAmt}&endAmt=${endAmt}&current=1">12个月以下</a></li>
+                                <li><a href="InvestMent.do?startTerm=12&endTerm=60&startAmt=${startAmt}&endAmt=${endAmt}&current=1">12个月及以上</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <div class="invest-range">
+                        <ul class="clearfix">
+                            <li><span class="input-wrap"><input type="text" class="input" name="startAmt"></span></li>
+                            <li class="unit">万元</li>
+                            <li class="dash">-</li>
+                            <li><span class="input-wrap"><input type="text" class="input" name="endAmt"></span></li>
+                            <li class="unit">万元</li>
+                        </ul>
+                       <input type="submit"   value="确定"/>
+                    </div> 
+                </div>
+            </form> 
+        </div>
+        <div class="table-title-wrap clearfix">
+            <span class="table-title">符合的项目</span>
+            <ul class="sort-group clearfix">
+                <li class="first-col"><span class="def" column="currentPrice">当前投资金额</span></li>
+                <li class="last-col"><span class="def" column="investPeriod">投资期限</span></li>
             </ul>
-           <input type="submit"   value="确定"/>
-        </div> 
-    </div>
-   </form> 
-</div>            <div class="table-title-wrap clearfix">
-                <span class="table-title">符合的项目</span>
-                <ul class="sort-group clearfix">
-                    <li class="first-col"><span class="def" column="currentPrice">当前投资金额</span></li>
-                    <li class="last-col"><span class="def" column="investPeriod">投资期限</span></li>
-                </ul>
-                <span class="sort-txt">排序</span>
-            </div>
-            <div class="list-table-wrap" id="list-table-wrap">
-                             <ul class="list-table" id="list-table">
-                 <c:forEach items="${listPage}" var="invest"> 
-                                            <li class="clearfix">
-                            <div class="product-status">
-                                <p class="product-name">
-                                    <a href="" target="_blank">${invest.PROD_NAME}</a>
-                                                                            <i class="iconV2 new-user-icon"></i>
-                                                                                                                                            </p>
-
-                                <div class="product-info-wrap clearfix">
-                                    <p class="product-info-l">
-                                        <span class="interest-rate">预期年化利率：<fmt:formatNumber value="${invest.EXP_Y_RATE}" type="percent"/></span>
-                                        <span class="invest-period">投资期限：${invest.TERM}</span>
-                                    </p>
-
-                                    <p class="product-info-r">
-                                        <span class="invest-price">项目本金：${invest.PROD_CAPITAL}
+            <span class="sort-txt">排序</span>
+        </div>
+        <div class="list-table-wrap" id="list-table-wrap">
+            <ul class="list-table" id="list-table">
+                <c:forEach items="${listPage}" var="invest"> 
+                    <li class="clearfix">
+                        <div class="product-status">
+                            <p class="product-name">
+                                <a href="" target="_blank">${invest.PROD_NAME}</a>
+                                <i class="iconV2 new-user-icon"></i>
+                            </p>
+                            <div class="product-info-wrap clearfix">
+                                <p class="product-info-l">
+                                    <span class="interest-rate">预期年化利率：<fmt:formatNumber value="${invest.EXP_Y_RATE}" type="percent"/></span>
+                                    <span class="invest-period">投资期限：${invest.TERM}</span>
+                                </p>
+                                <p class="product-info-r">
+                                    <span class="invest-price">项目本金：${invest.PROD_CAPITAL}
                                             元</span>
-                                                                                    <span class="remain-price">剩余可投金额：${invest.PROD_CAPITAL-invest.gathered_amt}
+                                    <span class="remain-price">剩余可投金额：${invest.PROD_CAPITAL-invest.gathered_amt}
                                                 元</span>
-                                                                                                                                                                                                    </p>
-                                </div>
+                                </p>
                             </div>
-                                              <div class="operate-status clearfix">
-                                    <div class="current-amount">
-                                        <strong>当前投资金额</strong>
-                                        <span class="cur">${invest.LOW_AMT}</span> 元起
-                                                </div>
-                                                              <a href="investmentInfo.do?prod_no=${invest.prod_no}" target="_blank" class="btns">${invest.state}</a>                                                      </div>
-                                                    </li>
-                          </c:forEach>              
-                       
-                                    </ul>
-
-                <div class="cpagination ui_complex_pagination">
-                   <a href="InvestMent.do?current=1&startTerm=${startTerm}&endTerm=${endTerm}&startAmt=${startAmt}&endAmt=${endAmt}" class="btns btn_page btn_small last">首页</a>
-                   <c:choose>
-                   <c:when test="${current>1}">
+                        </div>
+                        <div class="operate-status clearfix">
+                            <div class="current-amount">
+                                <strong>当前投资金额</strong>
+                                <span class="cur">${invest.LOW_AMT}</span> 元起
+                            </div>
+                            <a href="investmentInfo.do?prod_no=${invest.prod_no}" target="_blank" class="btns">${invest.state}</a>
+                        </div>
+                    </li>
+                </c:forEach>              
+            </ul>
+            <div class="cpagination ui_complex_pagination">
+                <a href="InvestMent.do?current=1&startTerm=${startTerm}&endTerm=${endTerm}&startAmt=${startAmt}&endAmt=${endAmt}" class="btns btn_page btn_small last">首页</a>
+                <c:choose>
+                    <c:when test="${current>1}">
                     <a href="InvestMent.do?current=${current-1}&startTerm=${startTerm}&endTerm=${endTerm}&startAmt=${startAmt}&endAmt=${endAmt}" class="btns btn_page btn_small next">上一页</a>
                     </c:when>
                     <c:otherwise>
                       <a href="#" class="btns btn_page btn_small next">上一页</a>
                     </c:otherwise>
-                 </c:choose>
-                    <p class="pageNum">第${current}页/共${totalPage}页</p>
-                    <c:choose>
+                </c:choose>
+                <p class="pageNum">第${current}页/共${totalPage}页</p>
+                <c:choose>
                     <c:when test="${current<totalPage}">
                     <a class="btns btn_page btn_small next" href="InvestMent.do?current=${current+1}&startTerm=${startTerm}&endTerm=${endTerm}&startAmt=${startAmt}&endAmt=${endAmt}" id="nextPage">下一页<span class="caret">&gt;</span></a>
                     </c:when>
@@ -163,11 +155,8 @@
                     </c:choose>
                     <a class="btns btn_page btn_small last" href="InvestMent.do?current=${totalPage}&startTerm=${startTerm}&endTerm=${endTerm}&startAmt=${startAmt}&endAmt=${endAmt}" id="lastPage">尾页</a>
                 </div>
-
             </div>
-            <div class="go-top hidden">
-            </div>
-
+            <div class="go-top hidden"></div>
         </div>
         <div class="list-sidebar">
                             <div class="weekly-data sidebar-panels">
