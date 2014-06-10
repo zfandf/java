@@ -1,0 +1,6 @@
+*.sh
+*.log
+.settings
+.buildpath
+.project
+.meta*
