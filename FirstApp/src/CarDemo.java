@@ -37,7 +37,7 @@ public class CarDemo {
 		if (distance > 2) {
 			totalPrice = 1.5 * (distance - 2);
 		}
-		totalPrice = totalPrice + startPrice + 1;
+		totalPrice = totalPrice + startPrice + shuiPrice;
 		System.out.println(totalPrice);
 		
 	}
