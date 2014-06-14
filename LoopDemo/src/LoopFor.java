@@ -63,7 +63,9 @@ public class LoopFor {
 		if (num == 1) {
 			isSu = false;
 		} else {
-			for (int i = 2; i < num; i++) {
+			// 37数字，2，3,4.。。36, 2 - 一直出到这个数的平方根就OK了
+//			for (int i = 2; i < num; i++) {// 这种写法效率太低
+			for (int i = 2; i <= Math.sqrt(num); i++) {
 				if (num % i == 0) {
 					isSu = false;
 					break;
