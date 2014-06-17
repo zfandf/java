@@ -11,6 +11,8 @@ public class DianCan {
         int num = (int)(Math.random()*catNum);
 
         System.out.println(canList[num]);
+        getch();
+        return 0;
     }
 
 }
