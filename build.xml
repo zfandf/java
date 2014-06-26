@@ -35,7 +35,7 @@
      <apply executable="/usr/local/php/bin/php" failonerror="true">
    <arg value="-l" />
    <fileset dir="${basedir}">
-    <include name="**/*.php" />
+    <include name="*.php" />
     <modified />
    </fileset>
 
