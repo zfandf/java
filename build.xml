@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="name-of-project" default="build">
+ <target name="build"
+   depends="prepare,lint,phpcs,phpcs-ci,phpunit"/>
+
+ <target name="build-parallel"
+   depends="prepare,lint,tools-parallel,phpunit"/>
+
+ <target name="tools-parallel" description="Run tools in parallel">
+  <parallel threadCount="2">
+   <sequential>
+   </sequential>
+   <antcall target="phpcs"/>
+   <antcall target="phpcs-ci"/>
+  </parallel>
+ </target>
+
+ <target name="clean" description="Cleanup build artifacts">
+  <delete dir="${basedir}/build/api"/>
+  <delete dir="${basedir}/build/coverage"/>
+  <delete dir="${basedir}/build/logs"/>
+  <delete dir="${basedir}/build/pdepend"/>
+ </target>
+
+ <target name="prepare" depends="clean" description="Prepare for build">
+  <mkdir dir="${basedir}/build/api"/>
+  <mkdir dir="${basedir}/build/coverage"/>
+  <mkdir dir="${basedir}/build/logs"/>
+  <mkdir dir="${basedir}/build/pdepend"/>
+  <mkdir dir="${basedir}/build/phpdox"/>
+ </target>
+
+ <target name="lint" description="Perform syntax check of sourcecode files">
+     <apply executable="/usr/local/php/bin/php" failonerror="true">
+   <arg value="-l" />
+   <fileset dir="${basedir}">
+    <include name="*.php" />
+    <modified />
+   </fileset>
+
+   <fileset dir="${basedir}/unit">
+    <include name="**/*Test.php" />
+    <modified />
+   </fileset>
+  </apply>
+ </target>
+
+ <target name="phpcs"
+         description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
+         <exec executable="/usr/local/php/bin/phpcs">
+   <arg value="--standard=${basedir}/build/phpcs.xml" />
+   <arg path="${basedir}/source" />
+  </exec>
+ </target>
+
+ <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
+     <exec executable="/usr/local/php/bin/phpcs" output="/dev/null">
+   <arg value="--report=checkstyle" />
+   <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
+   <arg value="--standard=${basedir}/build/phpcs.xml" />
+   <arg path="${basedir}/source" />
+  </exec>
+ </target>
+
+ <target name="phpunit" description="Run unit tests with PHPUnit">
+     <exec executable="/usr/local/bin/phpunit" failonerror="false"/>
+ </target>
+</project>
