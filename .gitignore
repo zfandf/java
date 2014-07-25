@@ -4,3 +4,5 @@
 .buildpath
 .project
 .meta*
+/InstanceofDemo/nbproject/private/
+/InstanceofDemo/build/

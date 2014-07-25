@@ -4,9 +4,9 @@ public class Test1 {
 
 	public static void main(String[] args) {
 		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://192.168.10.71:3306/life";
+		String url = "jdbc:mysql://127.0.0.1/life";
 		String user = "root";
-		String password = "123456";
+		String password = "qq72298482";
 		
 		try {
 			Class.forName(driver);
