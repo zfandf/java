@@ -1,0 +1,2 @@
+<?PHP exit;?>	2012-05-02 05:18:29|用户名：jackmic|减去|金额：-118|说明买入<a href=\'http://product.dangdang.com/product.aspx?product_id=410016597#ref=www-0-h\' target=\'_blank\'>《dangdang baby 女童背带牛仔裤 DGBZA9701 80-100码 - 孕婴服饰 - 当当网》</a> 1件，订单ID:32
+<?PHP exit;?>	2012-05-02 05:20:48|用户名：jackmic|减去|金额：-15|说明调整商品<a href=\'http://product.dangdang.com/product.aspx?product_id=410016597#ref=www-0-h\' target=\'_blank\'>《dangdang baby 女童背带牛仔裤 DGBZA9701 80-100码 - 孕婴服饰 - 当当网》</a>运费：15订单ID:32

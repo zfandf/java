@@ -1,0 +1,14 @@
+
+解压程序到根目录
+然后恢复数据库daiz.sql  UTF-8编码  程序修改DW8 utf-8编码
+修改数据库连接文件
+/config/config.inc.php 
+
+	$dbhost = 'localhost';			// 数据库服务器
+	$dbuser = 'daiz';			// 数据库用户名
+	$dbpw = 'h4q8m8y4';				// 数据库密码
+	$dbname = 'daiz';			// 数据库名
+	$pconnect = 0;				// 数据库持久连接 0=关闭, 1=打开
+
+安装结束！
+打开http://您的网站地址/admin/  admin  admin888

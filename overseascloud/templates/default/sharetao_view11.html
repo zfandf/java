@@ -1,0 +1,671 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link href="{TPL}css/NewTopFoot.css" rel="Stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link href="{TPL}css/NewTopFoot.css" rel="Stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/AddItemPanel.css">
+<meta content="{lang Recommendation_purchasing_apparel_skin_care_food}" name="keywords">
+<meta content="{lang What_Shopping_what_delicious_Chinese_you}" name="description">
+<link type="text/css" rel="stylesheet" href="{TPL}css/pages.css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/sharetao.css">
+<link type="text/css" rel="stylesheet" href="{TPL}css/jquery-ui.css">
+<title>
+	[{$cfg_site_name}-{lang Recommended}] -{lang Chinese_purchase_purchasing_immediately}！
+</title></head>
+<body>
+<script src="{TPL}js/sharetao/common.js" type="text/javascript"></script>
+<script src="{TPL}js/sharetao/jquery.min.js" type="text/javascript"></script>    
+<script src="{TPL}js/sharetao/jquery.form.js" type="text/javascript"></script>
+<script src="{TPL}js/sharetao/JqueryAjax.js" type="text/javascript"></script>
+{template 'header_share'}
+<div class="stbody">
+<div class="stwarp">
+  <div class="st_nav_warp">
+  	<input value="/meilijie" id="myurl" type="hidden">
+    <div class="st_nav_tips"><img src="{TPL}images/sharetao/stnav_lg.gif" alt="与大家一起分享淘宝的乐趣吧！"></div>
+    <div class="st_nav">
+      <ul>
+       <li class="stn_yf"><a href="{url_sharetao.php?gtypeid=1}">衣服</a></li>
+       <li id="st_nav_line"></li>
+       <li class="stn_xz"><a href="{url_sharetao.php?gtypeid=2}">鞋包</a></li>
+       <li id="st_nav_line"></li>
+       <li class="stn_bb"><a href="{url_sharetao.php?gtypeid=3}">美容</a></li>
+       <li id="st_nav_line"></li>
+       <li class="stn_mz"><a href="{url_sharetao.php?gtypeid=4}">居家</a></li>
+       <li id="st_nav_line"></li>
+       <li class="stn_ps"><a href="{url_sharetao.php?gtypeid=5}">配饰</a></li>
+       <li id="st_nav_line"></li>
+       <li class="stn_ms"><a href="{url_sharetao.php?gtypeid=6}">食品</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--顶部导航结束-->
+  <!--面包屑导航开始-->
+<div class="bnav">
+  您现在的位置：<a href="{url_index.php}">首页</a><span>&gt;</span><a href="{url_sharetao.php}">分享</a>		
+</div>
+<div class="st_main">
+  <div class="stm_l">
+   <div class="stspmswarp">
+    <div class="stspms">
+      <dl>
+		{eval 
+			$uid=$value['uid'];
+			include_once(INC_PATH.'/table.class.php');
+			$userobj=new TableClass('users','uid');
+			$uservalue=$userobj->getone($uid);
+		}	  
+        <dt><img src="{$uservalue['face']}" onerror="this.src='{TPL}images/sharetao/vip.gif'" width="32" height="32" /></dt>
+        <dd class="nam">{$value['uname']}<span class="tim">{echo date('Y-m-d H:i:s',$r['addtime'])}</span></dd>
+        <dd><span>{$value['why']}</span></dd>
+      </dl>
+    </div>
+   </div>
+   	   <div class="st_spinfo">
+      <div class="st_spimg"><img src="{$value['goodsimg']}" width="230" height="310" /></div>
+      <div class="st_spr">
+        <div class="st_sptitle">
+          <h1>{$value['goodsname']}</h1>
+          <div class="st_saleinfo">
+          </div>
+        </div>
+        <div class="st_price">价格：<font style="font-size:15px;font-weight:blod;">￥</font><span>{$value['goodsprice']}</span></div>
+		<div class="st_lk_warp">
+          <div class="fl">
+          	<form method="POST" action="{url_sharetao.php?action=view&share_like=xihuan}">
+			  <input type="hidden" name="tao_id" value="{$value['gid']}"/>
+			  <input type="hidden" id="NoLike" name="NoLike" value=""/>
+			  <a href="javascript:void(0);" class="st_lk_ak"  style="display:none"></a>
+			  <input type="button" class="st_lkbtn" value=""/>
+			</form>
+          </div>		  
+		{eval 
+		$gid=$value['gid'];
+		include_once(INC_PATH.'/table.class.php');
+		$likeobj=new TableClass('goodslike','lid');	
+		$pingobj=new TableClass('goodscomment','cid');						
+		$like_count=$likeobj->getcount("state = 1 and gid = '$gid'");
+		$ping_count=$pingobj->getcount("state = 1 and gid = '$gid'");
+		}
+          <div class="fl"><span class="st_lknum">{$like_count}</span></div>
+        </div>		
+        <div class="st_dgthis">  
+         <a  target="_blank" href="{$value['goodsurl']}">代购这件商品&gt;&gt;</a>
+        </div>
+		<div class="st_scanmore">查看更多的<b><a href="{url_sharetao.php?gtypeid=$value['gtypeid']}"> {$gtype['typename']}>></a></b></div>        								       <div class="sharejs">
+       		<form action="/sharetao/getShareTao" method="POST" onsubmit="return ajaxSub(this,'getShareTao')">
+			<input type="hidden" name="id" value="1251"/>
+        	     <div class="plzf fl">
+	          		<span>{$ping_count}</span>评论 |<span>{$value['views']}</span>浏览 |
+			     </div>
+			 </form>
+			<div class="fenxiangdao" style="display:none;"> 
+          <!-- JiaThis Button BEGIN -->
+			<div id="ckepop">
+				<span class="jiathis_txt">分享到：</span>
+				<a class="jiathis_button_tsina"></a>
+				<a class="jiathis_button_tqq"></a>
+				<a class="jiathis_button_renren"></a>
+				<a class="jiathis_button_fb"></a>
+				<a class="jiathis_button_twitter"></a>
+				<a class="jiathis_button_tumblr"></a>
+				<a class="jiathis_button_douban"></a>
+				<a href=" http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>			
+			</div>
+			<!-- JiaThis Button END -->
+          </div> 
+        </div>
+      </div>
+      <div class="cl"></div>
+    </div><!--商品信息结束-->
+       <div class="stcomentswarp">
+      <div class="stcoments">
+      	<form method="POST" action="{url_sharetao.php?action=view&common=share_common}">
+      	<input type="hidden" name="taoid" value="{$value['gid']}"/>
+        <div class="stcomedtbg">
+          <textarea name="txtcommentss" MaxLength="100" class="stcomedt_txt"></textarea>
+          <div class="sendmsg_tool">
+            <ul>
+              <li class="sdmsg_face"><a id="biaoqin" href="javascript:void(0);">表情</a></li>
+              </ul>
+          </div>
+          <div class="sendplbtnbg">
+            <div class="sendzf" style="display:none;">
+              <table width="120" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="17" height="34">
+                    <input type="checkbox" name="checkbox" id="zffs" />
+                  </td>
+                  <td width="103"><label for="zffs">转发给我的粉丝</label></td>
+                </tr>
+              </table>
+            </div>
+            <input type="button" name="btnPinlun" class="sendplbtn" value="" />
+            <p class="cl"></p>
+          </div>
+          <div class="cl"></div>
+		   <div class="biaoqing" id="div_biaoqin" style="top:150px;display:none;">
+            <ul>
+				<li><img src="{TPL}images/sharetao/head/baipu.gif" title="摆谱" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/biaoyan.gif" title="表演" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/budong.gif" title="不懂" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/chifan.gif" title="吃饭" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/chinai.gif" title="吃奶" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/danding.gif" title="淡定" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/fankun.gif" title="犯困" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/jiaoao.gif" title="骄傲" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/juhan.gif" title="巨寒" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/lenghan.gif" title="冷汗" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/luguo.gif" title="路过" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/paishou.gif" title="拍手" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/piaoguo.gif" title="飘过" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/shangxin.gif" title="伤心" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/songhua.gif" title="送花" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/wuliao.gif" title="无聊" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/yinxiao.gif" title="阴笑" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/yunle.gif" title="晕了" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/zoule.gif" title="走了" height="24" width="24"></li>
+				<li><img src="{TPL}images/sharetao/head/zuocao.gif" title="做操" height="24" width="24"></li>
+              <p class="cl"></p>
+            </ul>
+          </div>
+        </div>
+         </form>
+          <div class="stcoment_main mgt10">
+		  	{loop $commonarray $r}  
+			<dl>
+				{eval 
+				$uid=$r['uid'];
+				include_once(INC_PATH.'/table.class.php');
+				$userobj=new TableClass('users','uid');
+				$uservalue=$userobj->getone($uid);
+				}	
+				<dt><img src="{$uservalue['face']}" onerror="this.src='{TPL}images/sharetao/vip.gif'" width="38" height="38" /></dt>
+				<dd><span class="fl">{$r['uname']}</span> <span class="fr" style="width:130px; float:right;">{echo date('Y-m-d H:i:s',$r['addtime'])}</span></dd>
+				<dd><span>{Char_biaoqing($r['content'])}</span></dd>
+				<p class="cl"></p>
+			</dl> 		  
+		  	{/loop}	  
+          </div>
+		  <div class="cl"></div>		 
+			{echo pagelist($total,$pagesize,$page,"");}		
+          <div class="stcomentsico"></div>
+          <div class="cl"></div>
+      </div>
+    </div><!--商品评论结束-->
+	
+    <div class="stusershare_title"><span>{$value['uname']}</span>分享的更多宝贝</div>
+    <div class="stusershare_main">
+	
+	{loop $sharearray3 $r}
+		<div class="stusershare_l">
+			<div class="st_share">
+				<div class="st_share_top">
+					<div class="st_sht_pic">
+						<a target="_blank" href="{url_sharetao.php?action=view&gid=$r['gid']}"><img style="width:178px;" original="{$r['goodsimg']}" src="{$r['goodsimg']}"></a>
+					</div>
+					<div class="st_sht_like">
+						<div class="st_like_btnbg">
+							<form method="POST" action="{url_sharetao.php?action=view&share_like=xihuan}">
+								<input name="tao_id" value="{$r['gid']}" type="hidden" />
+								<input class="st_like_btn" name="like" value="" type="button" />
+								<div style="display: none;" class="like_over"><a name="like_over" href="javascript:void();">取消</a></div>
+								<input name="NoLike" value="" type="hidden" />
+							</form>
+						</div>
+						<div class="st_like_num">				
+							{eval 
+							$gid=$r['gid'];
+							include_once(INC_PATH.'/table.class.php');
+							$likeobj=new TableClass('goodslike','lid');	
+							$pingobj=new TableClass('goodscomment','cid');						
+							$like_count=$likeobj->getcount("state = 1 and gid = '$gid'");
+							$ping_count=$pingobj->getcount("state = 1 and gid = '$gid'");
+							}			
+							<div class="st_like_numl"></div>
+							<div class="st_like_numm">{$like_count}</div>
+							<div class="st_like_numr"></div>
+						</div>
+						<div class="st_like_pinglun"><a href="javascript:void(0)">{$ping_count}<span class="plks">评论</span></a></div>
+					</div>
+					<!--快速评论开始-->
+					<form method="POST" action="{url_sharetao.php?action=view&common=share_common}">
+						<input name="taoid" value="{$r['gid']}" type="hidden"/>
+						<div class="ksplbox" style="display: none;">
+							<div class="kspl_head"><img onerror="this.src='{TPL}images/sharetao/vip.gif'" alt="{$_USERS['showname']}" src="{$_USERS['face']}" height="26" width="26"></div>
+							<div class="kspl_right">
+								<textarea class="kspl_txt" maxlength="100" name="txtcommentss"></textarea>
+								<div class="kspl_tool">
+									<div class="kspl_bqbox posr">
+										<input class="kspl_bq" value="" type="button">
+										<!--表情开始-->
+										<div class="biaoqing2" style="top:5px; left:-20px; display: none;">
+											<ul>
+												<li><img src="{TPL}images/sharetao/head/baipu.gif" title="摆谱" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/biaoyan.gif" title="表演" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/budong.gif" title="不懂" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/chifan.gif" title="吃饭" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/chinai.gif" title="吃奶" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/danding.gif" title="淡定" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/fankun.gif" title="犯困" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/jiaoao.gif" title="骄傲" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/juhan.gif" title="巨寒" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/lenghan.gif" title="冷汗" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/luguo.gif" title="路过" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/paishou.gif" title="拍手" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/piaoguo.gif" title="飘过" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/shangxin.gif" title="伤心" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/songhua.gif" title="送花" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/wuliao.gif" title="无聊" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/yinxiao.gif" title="阴笑" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/yunle.gif" title="晕了" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/zoule.gif" title="走了" height="24" width="24"></li>
+												<li><img src="{TPL}images/sharetao/head/zuocao.gif" title="做操" height="24" width="24"></li>
+												<p class="cl"></p>
+											</ul>
+										</div>
+										<!--表情结束-->
+									</div>
+									<div class="kspl_plbox"><input name="btnPinlun2" class="kspl_pl" value="" type="button"></div>
+								</div>
+							</div>
+							<div class="cl"></div>
+						</div>
+					</form>
+					<!--快速评论结束-->
+				</div>
+				<div class="like_huifu">
+					<div class="like_hf_user">
+						<dl>			
+							{eval 
+							$uid=$r['uid'];
+							include_once(INC_PATH.'/table.class.php');
+							$userobj=new TableClass('users','uid');
+							$uservalue=$userobj->getone($uid);
+							}				
+							<dt><img original="{$uservalue['face']}" onerror="this.src='{TPL}images/sharetao/vip.gif'" alt="{$r['uname']}" src="{$uservalue['face']}" height="32" width="32"></dt>
+							<dd><span class="redf06">{$r['uname']}</span></dd>
+							<dd><span>{echo date('Y-m-d H:i:s',$r['addtime'])}</span></dd>
+							<div class="cl"></div>
+						</dl>
+					</div>
+					<div class="like_hf_info">{$r['why']}</div>
+				</div>
+				<!--图片+喜欢数+评论数结束-->
+				{eval 
+				$gid=$r['gid'];
+				include_once(INC_PATH.'/table.class.php');
+				$commonobj=new TableClass('goodscomment','cid');
+				$comarray=$commonobj->getdata(2,"gid='$gid' and state=1",'cid desc','cid,uid,uname,content,addtime');
+				}
+				{loop $comarray $com}
+				<div class="like_plun">
+					<div class="like_hf_user">
+						<dl>
+							{eval 
+							$uid=$com['uid'];
+							include_once(INC_PATH.'/table.class.php');
+							$userobj=new TableClass('users','uid');
+							$uservalue=$userobj->getone($uid);
+							}					
+						<dt><img  onerror="this.src='{TPL}images/sharetao/vip.gif'" alt="{$com['uname']}" src="{$uservalue['face']}" height="32" width="32" /></dt>
+						<dd><span class="redf06">{$com['uname']}</span></dd>
+						<dd><span>{echo date('Y-m-d H:i:s',$com['addtime'])}</span></dd>
+						<div class="cl"></div>
+						</dl>
+					</div>
+					<div class="like_hf_info">{Char_biaoqing($com['content'])}</div>
+				</div>
+				{/loop}
+				<!--回复内容结束-->
+			</div> 	  
+		</div>
+		<!--左第一列结束-->	  
+	{/loop}	
+		
+
+    </div>
+  </div>
+	<!--主题左侧结束-->
+	<div class="stm_r">
+		<div class="st_userinfo_r">
+			{eval 
+				$uid=$value['uid'];
+				include_once(INC_PATH.'/table.class.php');
+				$userobj=new TableClass('users','uid');
+				$userlikeobj=new TableClass('goodslike','lid');	
+				$usershareobj=new TableClass('goods','gid');					
+				$uservalue=$userobj->getone($uid);
+				$userlike_count=$userlikeobj->getcount("state = 1 and uid = '$uid'");
+				$usershare_count=$usershareobj->getcount("Audit=1 and uid = '$uid'");
+			}
+			<div class="st_userhead">
+				<div class="st_uh_pic"><img src="{$uservalue['face']}" onerror="this.src='{TPL}images/sharetao/vip.gif'" width="130" height="130" /></div>
+				<div class="st_uh_nam">{$value['uname']}</div>
+			</div>
+			<div class="st_unum_warp">
+				<ul>
+					<li class="st_ubdr">
+						<p class="st_unum_t">美丽街</p>
+						<p class="st_unum"><a target="_blank" href="{url_sharetao.php?type=usershare&user=$value['uname']}">{$usershare_count}</a></p>
+					</li>
+					<li class="st_ubdr">
+						<p class="st_unum_t">关注</p>
+						<p class="st_unum">{$value['views']}</p>
+					</li>
+					<li>
+						<p class="st_unum_t"><img src="{TPL}images/sharetao/heartnum.gif" /></p>
+						<p class="st_unum">{$userlike_count}</p>
+					</li>
+					<p class="cl"></p>
+				</ul>
+			</div>
+			<div class="st_addr_warp">
+				<div class="st_addr">地区：<span>{if !empty($uservalue['city'])}{$uservalue['city']}{else}保密{/if}</span></div>
+				<div class="st_sex">性别：<span>{if $uservalue['sex']== 0}女{else}男{/if}</span></div>
+				<p class="cl"></p>
+			</div>		
+			<div class="st_uc_btn">
+				<a target="_blank" href="/sharetao/iniFriendShareTaoIndex/User/20450"><input type="button" onclick="javascript:window.location.href='/sharetao/iniFriendShareTaoIndex/User/20450'" class="st_ucbtn_r fr" value="" /></a>
+				<p class="cl"></p>
+			</div> 		
+		</div>
+	<!--用户个人信息结束-->
+	</div>
+	<!--主题右侧结束-->
+
+  <div class="cl"></div>
+ <div class="stlike_tipsbox">
+  
+  <!--中间主要内容部分结束-->
+    </div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{TPL}js/sharetao/jquery.form.js"></script>
+<script type="text/javascript" src="{TPL}js/sharetao/JqueryAjax.js"></script>
+<script type="text/javascript" src="{TPL}js/sharetao/common.js"></script>
+<script type="text/javascript" src="{TPL}js/sharetao/jquery.lazyload.js"></script>
+
+<script type="text/javascript">
+$(function(){
+		$(".st_sht_pic img,.like_hf_user dt img").lazyload({
+			placeholder : "/Images/sharetao/grey.gif",
+            effect:"fadeIn",
+			failurelimit : 20
+    	})
+		//关闭提示
+		$(".close").click(function(){
+			$(this).parent("div").hide();
+		});
+		//底部图片大小限制
+		 var w=$(".st_sht_pic img").width();
+	     var h=$(".st_sht_pic img").height();
+	     var x=(w*178)/h;
+	     $(".st_sht_pic img").css({"width":"178px","height":"x"})
+		//中间图片大小限制
+	     var w1=$(".st_spimgs img").width();
+	     var h1=$(".st_spimgs img").height();
+	     var x1=(w1*400)/h1;
+	     var y1=(h1*420)/w1;
+	     if(w1<=420)
+	     {
+	        $(".st_spimgs img").css({"width":w1+"px","height":h1+"px"});
+	     }
+	     else
+		 { 
+		    $(".st_spimgs img").css({"width":"420px","height":y1+"px"});
+		 }
+		 
+		 
+		$(".st_ucbtn_l").click(function(){
+			$(this).parents("form").submit();
+		});
+		//喜欢当前商品
+		$(".st_lkbtn").click(function(){
+			$(this).parents("form").submit();
+		});
+		//取消喜欢当前商品
+		$(".st_lk_ak").click(function(){
+			$(this).siblings("[name=NoLike]").val("NoLike");
+			$(this).parents("form").submit();
+		});
+		//取消关注点击事件
+		$(".st_ucbtn_ygz").click(function(){
+			$(this).parents("form").submit();
+		});
+		$(".st_like_btn").click(function(){
+			$(this).parents("form").submit();
+		});
+		$("[name=like_over]").click(function(){
+			$(this).parent().fadeOut();
+			$(this).parent().next("[name=NoLike]").val("shanchu");
+			$(this).parents("form").submit();
+		});
+		$(".lp_close").click(function(){
+			$(this).parent(".like_pinglun").fadeOut();
+		});
+		//评论按钮点击
+		$("[name=btnPinlun]").click(function(){
+			if($(this).parent().parent().find("textarea").val()==""){
+				alert("请输入评论内容");
+				return false;
+			}
+			$(this).parents("form").submit();
+		});
+		$("[name=huifu]").click(function(){
+			var $name=$(this).parent().siblings().find(".fl").text();
+			$("[name=txtcommentss]").val("回复@"+$name+":");
+		});
+		
+		//发送私信按钮点击
+		$("#fasixin").click(function(){
+			$("#siXinName").text($(this).parents(".st_userinfo_r").find(".st_uh_nam").text());
+			$("#ceng").show();
+		});
+		//确定发送私信
+		$("#fasongsixin").click(function(){
+			if($("[name=textarea]").val()==""){
+				alert("请输入短信内容");
+				return false;
+			}
+			$(this).parents("form").submit();
+		});
+		
+		$("#biaoqin").click(function(){
+			$("#div_biaoqin").toggle();
+		});
+		$("#div_biaoqin li").children("img").click(function(){
+			insertAtCursor($("[name=txtcommentss]").get(0),"["+$(this).attr('title')+"]");
+		});
+		
+		//快速评论
+		$(".plks").click(function(){
+			$(this).parent().parent().parent().next().find(".ksplbox").toggle();				  
+		})
+		$(".kspl_bq").click(function(){
+			$(this).next(".biaoqing2").toggle();						 
+		})
+		//点击图片
+		$(".biaoqing2 li").children("img").click(function(){
+			insertAtCursor($(this).parents(".ksplbox").find("[name=txtcommentss]").get(0),"["+$(this).attr('title')+"]");
+		});
+		//快速评论按钮点击事件
+		$("[name=btnPinlun2]").click(function(){
+			if($(this).parents(".ksplbox").find("textarea").val()==""){
+				alert("请输入评论内容");
+				return false;
+			}
+			$(this).parents("form").submit();
+		});	
+		$("[name=zhuanfa]").click(function(){
+			$(this).parents("form").submit();
+		});
+		//确定发送私信
+		$("#zhuanfaxinxi").click(function(){
+			$(this).parents("form").submit();
+		});
+		
+});
+function getShareTao(data){
+	var data = eval("(" + data + ")")['data'];
+	var val="://@"+data['user_name']+":"+data['share_tao_content'];
+	$("#textarea").val(val);
+	$("[name=taoid]").val(data['share_tao_id']);
+	$("#ceng1").show();
+	$("#textarea").focus();
+}
+//解决光标处插入数据问题
+function insertAtCursor(myField, myValue) {
+  // IE
+      if (document.selection)  
+    {  
+    myField.focus();  
+    sel = document.selection.createRange();  
+  
+    sel.text = myValue;  
+    sel.select();  
+    }  
+else if (myField.selectionStart || myField.selectionStart == '0') {
+          // MOZILLA/NETSCAPE support
+
+          //起始位置
+          var startPos = myField.selectionStart;
+		
+          //结束位置
+          var endPos = myField.selectionEnd;
+		  $content=$(myField).val();
+          //插入信息
+		  $(myField).val($content.substr(0,startPos)+myValue+$content.substr(endPos,$content.length));
+      } else {
+
+          //没有焦点的话直接加在TEXTAREA的最后一位
+          myField.innerHTML += myValue;
+      }
+} 
+
+function doResultGuanZhu(data){
+	if(data==""){
+		window.location.href="/User/index";
+	}
+	var data = eval("(" + data + ")")['data'];
+	if(data!=null){
+		$("#wgz"+data).next().hide();
+		$("#ygz"+data).next().show();
+		$("#wgzs"+data).next().hide();
+	}
+}
+function doResultQuXiaoGuanZhu(data){
+	var data = eval("(" + data + ")")['data'];
+	if(data!=null){
+		$("#wgz"+data).next().show();
+		$("#ygz"+data).next().hide();
+		$("#ygzs"+data).next().hide();
+	}
+}
+function doResultLike(data){
+	var data = eval("(" + data + ")")['data'];
+	if (data != null) {
+		if(data[i]!=null){
+			if (data['count'] != null) {
+				var tao_id = data['tao_id'];
+				var count = data['count'];
+				var $tao = $("[name=tao_id]");
+				for (var i = 0; i < $tao.length; i++) {
+					if ($tao.eq(i).val() == tao_id) {
+						$tao.eq(i).parents(".st_sht_like").find(".st_like_numm").html(count);
+						if(data['NoLike']==null){
+							$tao.eq(i).parents(".st_sht_like").find(".like_pinglun").fadeIn();
+							$pinlun = $tao.eq(i).parents(".st_sht_like").find(".like_pinglun");
+							c=setTimeout(function pinlun(){$pinlun.fadeOut()},3000);
+							$pinlun.find("[name=txtcommentss]").focus(function(){
+								clearTimeout(c);
+							});
+						}else{
+							$div = $tao.eq(i).parents(".st_sht_like").find(".like_pinglun");
+							$tao.eq(i).parents(".st_sht_like").find("[name=NoLike]").val("");
+						}			
+					}
+				}
+			}
+			else {
+				var tao_id = data['tao_id'];
+				var $tao = $("[name=tao_id]");
+				for (var i = 0; i < $tao.length; i++) {
+					if ($tao.eq(i).val() == tao_id) {
+						$tao.eq(i).parents(".st_sht_like").find(".like_over").fadeIn();
+						$likeover =$tao.eq(i).parents(".st_sht_like").find(".like_over");
+						setTimeout(function likeover(){$likeover.fadeOut()},3000);
+					}
+				}
+			}			
+		}else{
+			if (data['count'] != null) {
+				var tao_id = data['tao_id'];
+				var count = data['count'];
+				var $tao = $("[name=tao_id]");
+				for (var i = 0; i < $tao.length; i++) {
+					if ($tao.eq(i).val() == tao_id) {
+						if($tao.eq(i).parent().parent().attr("class")=="st_like_btnbg" && $tao.eq(i).parent().parent().find("[name=i]").val()==null){
+								$tao.eq(i).parents(".st_sht_like").find(".st_like_numm").html(count);
+								if(data['NoLike']==null){
+									$tao.eq(i).parents(".st_like_btnbg").find(".like_pinglun").fadeIn();
+									$pinlun =$tao.eq(i).parents(".st_like_btnbg").find(".like_pinglun");
+									c=setTimeout(function pinlun(){$pinlun.fadeOut()},3000);
+									$pinlun.find("[name=txtcommentss]").focus(function(){
+										clearTimeout(c);
+									});
+								}else{
+									$div = $tao.eq(i).parents(".st_like_btnbg").find(".like_pinglun");
+									$tao.eq(i).parents(".st_like_btnbg").find("[name=NoLike]").val("");
+								}
+						};
+									
+					}
+				}
+			}
+			else {
+				var tao_id = data['tao_id'];
+				var $tao = $("[name=tao_id]");
+				for (var i = 0; i < $tao.length; i++) {
+					if ($tao.eq(i).val() == tao_id) {
+						$tao.eq(i).parents(".st_sht_like").find(".like_over").fadeIn();
+						$likeover =$tao.eq(i).parents(".st_sht_like").find(".like_over");
+						setTimeout(function likeover(){$likeover.fadeOut()},3000);
+					}
+				}
+			}	
+		}
+	}else{
+		window.location.href="/User/index";
+	}
+}
+function ResultLike(data){
+	var data = eval("(" + data + ")")['data'];
+	if (data != null) {
+
+		var count = data['count'];
+		$(".st_lknum").html(count);
+		if(data['NoLike']==null){
+			$(".st_lkbtn").hide();
+			$(".st_lk_ak").show();
+		}else{
+
+			$("#NoLike").val("");
+			$(".st_lk_ak").hide();
+			$(".st_lkbtn").show();
+		}			
+	}else{
+		window.location.href="/User/index";
+	}
+}
+</script>
+{template 'footer'}
+</body>
+</html>
