@@ -1,0 +1,10 @@
+.pages {height:25px;display:inline; }
+.pages li{list-style-type: none;}
+.pages  a{text-decoration:none;}
+.pages li{
+border:1px solid #AAAAAA;color:#666666;display:inline;float:left;height:25px;line-height:25px;margin-left:2px;padding:0 10px;text-decoration:none;}
+.pages li {border:1px solid #F19595;color:#CCC;font-family:"simsun";}
+
+.pages .current {background:#FF0066;border:1px solid #A71616;color:#FFFFFF;}
+.pages em {color:#FF3399;display:inline;float:left;height:22px;line-height:22px;margin-left:5px;}
+.lm{border:1px solid #ddd;}

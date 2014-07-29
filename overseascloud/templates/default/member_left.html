@@ -1,0 +1,101 @@
+        <div class="leftpan" style="border:1px #ccc solid;border-top:none;">
+            <h2>
+                {lang shoopimg}</h2>
+          <ul>
+                <li id="fillorders"><a href="{url_m.php?name=fillorders}">
+                    {lang i_like_Shopping}</a></li>
+                <li><a href="{url_shoppingcart.php}">
+                    {lang My_Shopping_Cart}</a></li>
+                <li id="favorite"><a href="{url_m.php?name=favorite}">
+                    {lang My_Favorites}</a></li>
+		       <li id="recommend"><a href="{url_m.php?name=recommend}">
+                    {lang I_recommend}</a></li>
+          </ul>
+            <h2>{lang shipping}</h2>
+          <ul>
+                <li id="orderlist"><a href="{url_m.php?name=orderlist}">{lang My_Order}</a></li>
+                <li id="sendorderlist"><a href="{url_m.php?name=sendorderlist}">{lang My_waybill}</a></li>
+                <li id="songlilist"><a href="{url_m.php?name=songlilist}">{lang songli_list}</a></li>
+          </ul>
+            <h2>
+                {lang Account_Management}</h2>
+          <ul>
+                <li  id="rmbaccount"><a href="{url_m.php?name=rmbaccount}">
+                    {lang my_RMB}<span>[{lang Recharge}]</span></a></li>
+                <li id="coupon"><a href="{url_m.php?name=coupon}">
+                    {lang My_Coupons}</a></li>
+                <li id="recordslist"><a href="{url_m.php?name=recordslist}">
+                    {lang Consumer_records}</a></li>
+                <li id="refundrecord"><a href="{url_m.php?name=refundrecord}">
+                    {lang qRefund_Record}</a></li>
+                <li id="pm"><a href="{url_m.php?name=pm}">
+                    {lang my_mail}<span>({$_USERS['pm']})</span></a></li>
+                <li id="myaddress"><a href="{url_m.php?name=myaddress}">
+                    {lang Receiving_Address_Book}</a></li>
+          </ul>
+            <h2 style="display:none;">
+                {lang my_group}&nbsp;<img alt="{lang my_group}" src="{TPL}images/new.gif"></h2>
+          <ul style="display:none;">
+                <li><a href="#">
+                    {lang iy_group}</a></li>
+                <li><a href="#">
+                    {lang ik_group}</a></li>
+                <li><a href="#">
+                    {lang ib_group}</a></li>
+                <li><a href="#">
+                    {lang concerned_group}</a></li>
+          </ul>
+            <h2>
+                {lang fen_manage}</h2>
+          <ul>
+                
+                <li id="scorerecords"><a href="{url_m.php?name=scorerecords}">
+                    {lang My_Points}</a></li>
+          </ul>
+            <h2>
+                {lang m_question}</h2>
+          <ul>
+                
+                <li  id="guestbooklist"><a href="{url_m.php?name=guestbooklist}">
+                    {lang My_questions}</a></li>
+          </ul>		  
+		  
+		  
+            <h2>
+                {lang P_Information_Management}</h2>
+          <ul>
+                
+                <li id="edituserinfo"><a href="{url_m.php?name=edituserinfo}">
+                    {lang Edit_Profile}</a></li>
+                <li id="changepassword"><a href="{url_m.php?name=changepassword}">
+                    {lang Change_Password}</a></li>
+                <li id="changeemail"><a href="{url_m.php?name=changeemail}">
+                    {lang Email_address_change}</a></li>
+          </ul>
+      </div>
+<script type="text/javascript"> 
+//左边样式切换
+$(function() {
+    var b = document.location.search.substr(1);
+    b = b.toLowerCase();
+	function GetValue(search,index)
+	{
+		try
+		{
+			var url = search;// document.location.search.substr(1);
+			var x = url.split("&");
+			var v = x[index].split("=")[1];
+			return v;
+		}
+		catch(e)
+		{
+			return "";
+		}
+	}
+	b = GetValue(b,0);
+	if(b!=""){
+	$("#"+b).addClass("xz");
+	}
+
+});
+</script>

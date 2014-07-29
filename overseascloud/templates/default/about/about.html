@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{$value['seokeywords']}" />
+<meta name="description" content="{$value['seodescription']}" />
+<link type="text/css" rel="Stylesheet" href="{TPL}css/NewTopFoot.css" />
+<link href="{TPL}css/AddItemPanel.css" rel="stylesheet" type="text/css" />
+<script src="{TPL}js/jquery-1.4.1.min.js" type="text/javascript"></script>
+<script src="{TPL}js/jQuery.Extend.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/jQuery.Drag.min.js"></script>
+<script src="{TPL}js/Plug-in/jquery.cookies.2.1.0.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{TPL}js/Gobal.js"></script>
+<link href="{TPL}css/about.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+	var id = '{$aid}';
+	$(function() {
+		$("#" + id).addClass("tl");
+	});
+</script>
+
+<title>
+	{$value['title']} - {$cfg_site_name}
+</title></head>
+<body>
+    
+<form name="" method="post" action="" id="">
+
+{template 'header'}
+
+<div class="about">
+        <div class="full">
+            <div class="leftpan">
+                <h2>
+                  {lang about_us}</h2>
+                <ul>
+                {loop $aboutlist $r}
+                <li id='{$r['aid']}'><a href='{url_about.php?aid=$r['aid']}'>{$r['title']}</a></li>
+				{/loop}			
+							
+                        
+                </ul>
+          </div>
+          <div class="rightpan">
+                <h1>{$value['title']}</h1>
+            <div class="detail">
+                     {$value['body']}
+            </div>
+            </div>
+        </div>
+        <div style="background: url({TPL}/images/yuan_top.gif) no-repeat -952px 0;
+            height: 5px; clear: both">
+        </div>
+    </div>
+
+    
+{template 'footer'}
+
+</form>
+</body>
+</html>
