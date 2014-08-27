@@ -4,6 +4,8 @@
 .buildpath
 .project
 .meta*
+*.class
+.*
 ajaxDemo/
 /InstanceofDemo/nbproject/private/
 /InstanceofDemo/build/
