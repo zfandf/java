@@ -1,6 +1,7 @@
 *.sh
 *.log
 .*
+/appcompat_v7
 /ajaxDemo
 /MainActivity2
 /library_switch_backport
