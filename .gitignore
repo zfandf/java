@@ -1,7 +1,10 @@
-*.sh
-*.log
-.*
-/appcompat_v7
-/ajaxDemo
-/MainActivity2
-/library_switch_backport
+apk/
+bin/
+gen/
+.settings/
+.metadata/
+*.DS_Store
+*.classpath
+*.lint.xml
+.project
+*/local.properties
